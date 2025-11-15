@@ -1,8 +1,51 @@
-[gd_scene load_steps=2 format=3 uid="uid://culd3exaoejf3"]
+[gd_scene load_steps=8 format=3 uid="uid://culd3exaoejf3"]
 
 [ext_resource type="PackedScene" uid="uid://cvm8me5d1w5ty" path="res://characters/Diana/player.tscn" id="1_3hls8"]
+[ext_resource type="Texture2D" uid="uid://ljv02ou1a2l2" path="res://objects/table/Table.png" id="2_hbghi"]
+[ext_resource type="Texture2D" uid="uid://dd0ulo3g2uay0" path="res://objects/visors/Visor01.png" id="3_ihfcg"]
+[ext_resource type="Texture2D" uid="uid://dow08llb2ho1t" path="res://characters/Diana/Helmet_off.png" id="4_5hph3"]
+[ext_resource type="Texture2D" uid="uid://bvbf2igu5uq2m" path="res://characters/Diana/Helmet.png" id="4_j7kpp"]
+[ext_resource type="Texture2D" uid="uid://85x5uqp2tfcs" path="res://objects/visors/Visor02.png" id="4_rka8t"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hbghi"]
+size = Vector2(162, 161)
 
 [node name="Level 1" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_3hls8")]
 position = Vector2(567, 399)
+
+[node name="Table" type="Area2D" parent="."]
+position = Vector2(156, 400)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Table"]
+texture = ExtResource("2_hbghi")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Table"]
+visible = false
+position = Vector2(-2, -6.5)
+shape = SubResource("RectangleShape2D_hbghi")
+
+[node name="Visors" type="Node2D" parent="Table"]
+position = Vector2(-11, 8)
+scale = Vector2(2, 2)
+
+[node name="Visor01" type="Sprite2D" parent="Table/Visors"]
+position = Vector2(21, -13.5)
+texture = ExtResource("3_ihfcg")
+flip_h = true
+
+[node name="Visor04" type="Sprite2D" parent="Table/Visors"]
+position = Vector2(0.5, -13)
+texture = ExtResource("4_j7kpp")
+
+[node name="Visor03" type="Sprite2D" parent="Table/Visors"]
+position = Vector2(6.5, -10)
+texture = ExtResource("4_5hph3")
+flip_h = true
+
+[node name="Visor02" type="Sprite2D" parent="Table/Visors"]
+position = Vector2(29, -13)
+texture = ExtResource("4_rka8t")
+flip_h = true
