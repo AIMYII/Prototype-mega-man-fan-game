@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://xhnovmtr6a7a"]
+
+[ext_resource type="PackedScene" uid="uid://b3upopleyfptp" path="res://characters/Model L/loop for companions.tscn" id="1_nc07d"]
+
+[node name="Model L" type="CharacterBody2D"]
+
+[node name="Loop" parent="." instance=ExtResource("1_nc07d")]
