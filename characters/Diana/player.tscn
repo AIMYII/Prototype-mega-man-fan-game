@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://cvm8me5d1w5ty"]
+[gd_scene load_steps=38 format=3 uid="uid://cvm8me5d1w5ty"]
 
 [ext_resource type="Texture2D" uid="uid://dbf5tnuch4vwr" path="res://characters/Diana/Spritesheets/Diana Blinking and idle.png" id="1_i3pqv"]
 [ext_resource type="Script" uid="uid://ch781gbtwqbjt" path="res://scripts/player.gd" id="1_sxv60"]
@@ -8,9 +8,9 @@
 [ext_resource type="Texture2D" uid="uid://bvbf2igu5uq2m" path="res://characters/Diana/Helmet.png" id="3_pdb42"]
 [ext_resource type="Texture2D" uid="uid://dyqfqgqdqovlm" path="res://characters/Diana/Spritesheets/On visor.png" id="3_sweqy"]
 [ext_resource type="Texture2D" uid="uid://daldutxfpgl22" path="res://characters/Diana/Sprites/Idle03-Visor.png" id="4_u1wkg"]
-[ext_resource type="Texture2D" uid="uid://dbnih0brym3en" path="res://characters/Diana/Sprites/Idle01.png" id="5_vggx0"]
-[ext_resource type="Texture2D" uid="uid://ghqcs2fx8d0e" path="res://characters/Diana/Sprites/Idle02.png" id="6_pfwer"]
-[ext_resource type="Texture2D" uid="uid://cqfa5icwgneej" path="res://characters/Diana/Sprites/Idle03.png" id="7_wrtgy"]
+[ext_resource type="Texture2D" uid="uid://b81yd0i7bqxeh" path="res://characters/Diana/Sprites/Idle01-WithoutVisor.png" id="5_w1ofx"]
+[ext_resource type="Texture2D" uid="uid://suipk5mtmtef" path="res://characters/Diana/Sprites/Idle02-WithoutVisor.png" id="6_vem0h"]
+[ext_resource type="Texture2D" uid="uid://dvvki8s1onu18" path="res://characters/Diana/Sprites/Idle03-WithoutVisor.png" id="7_vjopg"]
 [ext_resource type="Texture2D" uid="uid://exl8feiiv2i" path="res://characters/Diana/Sprites/Visor off01.png" id="8_vem0h"]
 [ext_resource type="Texture2D" uid="uid://bmc4sx4fle741" path="res://characters/Diana/Sprites/Visor off02.png" id="9_vjopg"]
 [ext_resource type="Texture2D" uid="uid://tufplvpuvrqf" path="res://characters/Diana/Sprites/Visor off03.png" id="10_yldqv"]
@@ -40,13 +40,13 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("5_vggx0")
+"texture": ExtResource("5_w1ofx")
 }, {
 "duration": 1.0,
-"texture": ExtResource("6_pfwer")
+"texture": ExtResource("6_vem0h")
 }, {
 "duration": 1.0,
-"texture": ExtResource("7_wrtgy")
+"texture": ExtResource("7_vjopg")
 }],
 "loop": true,
 "name": &"Idle without visor",
@@ -71,19 +71,19 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("13_dml63")
-}, {
-"duration": 1.0,
-"texture": ExtResource("14_76433")
+"texture": ExtResource("18_k38ow")
 }, {
 "duration": 1.0,
 "texture": ExtResource("15_4ffn7")
 }, {
 "duration": 1.0,
+"texture": ExtResource("14_76433")
+}, {
+"duration": 1.0,
 "texture": ExtResource("16_iosu2")
 }, {
 "duration": 1.0,
-"texture": ExtResource("18_k38ow")
+"texture": ExtResource("13_dml63")
 }],
 "loop": false,
 "name": &"Visor On",
@@ -204,6 +204,9 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w1ofx"]
+size = Vector2(24, 49.333336)
+
 [node name="Player" type="CharacterBody2D"]
 scale = Vector2(3, 3)
 script = ExtResource("1_sxv60")
@@ -212,6 +215,14 @@ metadata/_edit_group_ = true
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_sxv60")
 animation = &"Idle without visor"
+
+[node name="Redscreen" type="ColorRect" parent="."]
+visible = false
+offset_left = -53.666668
+offset_top = -30.333334
+offset_right = 447.0
+offset_bottom = 260.33334
+color = Color(1, 0, 0, 0.0627451)
 
 [node name="Helmet" type="Marker2D" parent="."]
 visible = false
@@ -222,6 +233,7 @@ texture = ExtResource("3_pdb42")
 flip_h = true
 
 [node name="Helmet_Off" type="Marker2D" parent="."]
+visible = false
 position = Vector2(1, -18.497)
 
 [node name="Sprite2D" type="Sprite2D" parent="Helmet_Off"]
@@ -238,6 +250,9 @@ sprite_frames = SubResource("SpriteFrames_sxv60")
 animation = &"Idle without visor"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(0, -6.357829e-07)
+shape = SubResource("RectangleShape2D_w1ofx")
 
 [node name="Wait_Timer_Helmet_Animation" type="Timer" parent="."]
 one_shot = true

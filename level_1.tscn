@@ -1,22 +1,26 @@
-[gd_scene load_steps=8 format=3 uid="uid://culd3exaoejf3"]
+[gd_scene load_steps=10 format=3 uid="uid://culd3exaoejf3"]
 
 [ext_resource type="PackedScene" uid="uid://cvm8me5d1w5ty" path="res://characters/Diana/player.tscn" id="1_3hls8"]
+[ext_resource type="Script" uid="uid://nnltpsnlpgiq" path="res://scripts/level_1.gd" id="1_bjebc"]
 [ext_resource type="Texture2D" uid="uid://ljv02ou1a2l2" path="res://objects/table/Table.png" id="2_hbghi"]
+[ext_resource type="Script" uid="uid://d0mtxmml8bpkr" path="res://scripts/table.gd" id="2_j7kpp"]
 [ext_resource type="Texture2D" uid="uid://dd0ulo3g2uay0" path="res://objects/visors/Visor01.png" id="3_ihfcg"]
 [ext_resource type="Texture2D" uid="uid://dow08llb2ho1t" path="res://characters/Diana/Helmet_off.png" id="4_5hph3"]
 [ext_resource type="Texture2D" uid="uid://bvbf2igu5uq2m" path="res://characters/Diana/Helmet.png" id="4_j7kpp"]
 [ext_resource type="Texture2D" uid="uid://85x5uqp2tfcs" path="res://objects/visors/Visor02.png" id="4_rka8t"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hbghi"]
-size = Vector2(162, 161)
+size = Vector2(310, 201)
 
 [node name="Level 1" type="Node2D"]
+script = ExtResource("1_bjebc")
 
 [node name="Player" parent="." instance=ExtResource("1_3hls8")]
 position = Vector2(567, 399)
 
 [node name="Table" type="Area2D" parent="."]
 position = Vector2(156, 400)
+script = ExtResource("2_j7kpp")
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Table"]
@@ -24,7 +28,7 @@ texture = ExtResource("2_hbghi")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Table"]
 visible = false
-position = Vector2(-2, -6.5)
+position = Vector2(10, -26.5)
 shape = SubResource("RectangleShape2D_hbghi")
 
 [node name="Visors" type="Node2D" parent="Table"]
@@ -49,3 +53,6 @@ flip_h = true
 position = Vector2(29, -13)
 texture = ExtResource("4_rka8t")
 flip_h = true
+
+[connection signal="Visor_on" from="." to="Player" method="_on_level_1_visor_on"]
+[connection signal="body_shape_entered" from="Table" to="." method="_on_table_body_shape_entered"]

@@ -39,6 +39,7 @@ func _Animations():
 	if Input.is_action_pressed("visor_on"):
 		#if Visor_change == 0:
 		$AnimatedSprite2D.play("Visor On")
+		$Redscreen.show()
 			#Visor_On = true;
 			#Idle = true;
 			#Visor_change = 1;
@@ -48,6 +49,7 @@ func _Animations():
 	if Input.is_action_pressed("visor_off"):
 	#	if Visor_change == 0:
 		$AnimatedSprite2D.play("Visor Off")
+		$Redscreen.hide()
 			#Visor_On = false;
 			#Idle = true;
 			#Visor_change = 1;
@@ -70,3 +72,7 @@ func _Animations():
 func _on_wait_timer_helmet_animation_timeout():
 	#Visor_change = 0;
 	print("Done")
+
+
+func _on_level_1_visor_on():
+	$Helmet_Off.show()
